@@ -28,10 +28,11 @@
           {% if user.is_authenticated %}
             <a class="nav-item nav-link" href="{% url 'post_new' %}">New Post</a>
             <a class="nav-item nav-link" href="{% url 'post_draft_list' %}">Drafts</a>
-            <a class="nav-item nav-link" href="{% url 'logout' %}">Log out</a>
+            <a class="nav-item nav-link" href="{% url 'apppass:user_logout' %}">Log out</a>
             <a >Welcome: {{ user.username }}</a>
           {% else %}
-            <a class="nav-item nav-link" href="{% url 'login' %}" aria-label="Login">Login</a>
+            <a class="nav-item nav-link" href="{% url 'apppass:user_login' %}" aria-label="Login">Login</a>
+            <a class="nav-item nav-link" href="{% url 'apppass:register' %}" aria-label="">Register</a>
           {% endif %}
         </div>
       </div>

@@ -58,7 +58,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('apppass:index'))
+                return HttpResponseRedirect(reverse('index'))
 
             else:
                 return HttpResponse('Account not active')
@@ -73,4 +73,4 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('apppass:index'))
+    return HttpResponseRedirect(reverse('index'))
