@@ -23,6 +23,7 @@
           <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
           <a class="nav-item nav-link" href="https://www.github.com">Github</a>
           <a class="nav-item nav-link" href="https://www.linkedin.com">LinkedIn</a>
+            <a class="nav-item nav-link" href="{% url 'formwizzard:mpform' %}">MPForm</a>
         </div>
         <div class="navbar-nav align-items-center ml-auto">
           {% if user.is_authenticated %}

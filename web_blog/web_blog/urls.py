@@ -24,5 +24,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('accounts/login/', views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}), # redirecting to '/' will take you back to the homepage or regex''
-    path('test/', include('apppass.urls'))
+    path('test/', include('apppass.urls')),
+    path('mpform/', include('formwizzard.urls')),
 ]
