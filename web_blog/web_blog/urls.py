@@ -17,6 +17,13 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.contrib.auth import views
 from blog.views import PostListView
+from restapp.views import UserViewSet
+from rest_framework import routers
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +33,6 @@ urlpatterns = [
     path('accounts/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page': '/'}), # redirecting to '/' will take you back to the homepage or regex''
     path('test/', include('apppass.urls')),
     path('mpform/', include('formwizzard.urls')),
+    path('rest/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
