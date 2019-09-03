@@ -41,5 +41,5 @@ urlpatterns = [
     path('rest/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
-    path('datatables/', include('albums.urls'))
+    path('datatables/', include('albums.urls')),
 ]
