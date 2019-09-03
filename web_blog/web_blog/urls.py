@@ -18,11 +18,14 @@ from django.urls import path, re_path, include
 from django.contrib.auth import views
 from blog.views import PostListView
 from restapp.views import UserViewSet
+from albums.views import AlbumViewSet, ArtistViewSet
 from rest_framework import routers
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'albums', AlbumViewSet)
+router.register(r'artists', ArtistViewSet)
 
 
 urlpatterns = [
@@ -35,4 +38,6 @@ urlpatterns = [
     path('mpform/', include('formwizzard.urls')),
     path('rest/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls)),
+    path('datatables/', include('albums.urls'))
 ]
