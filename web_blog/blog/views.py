@@ -33,6 +33,13 @@ class AboutView(TemplateView):
     template_name = 'blog/about.html'
 
 
+def post_table_view(request):
+    return render(request, 'blog/post_table.html')
+
+def comment_table_view(request):
+    return render(request, 'blog/comment_table.html')
+
+
 class PostListView(ListView):
     model = Post
 

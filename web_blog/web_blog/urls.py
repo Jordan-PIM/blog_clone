@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 from django.contrib.auth import views
-from blog.views import PostListView
+from blog.views import PostListView, post_table_view, comment_table_view
 from restapp.views import UserViewSet
 from albums.views import AlbumViewSet, ArtistViewSet
 from rest_framework import routers
@@ -42,4 +42,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/', include(router.urls)),
     path('datatables/', include('albums.urls')),
+    path('post_table/', post_table_view),
+    path('comment_table/', comment_table_view),
 ]
