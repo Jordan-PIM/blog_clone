@@ -11,6 +11,23 @@ from django.views.generic import (TemplateView,ListView,
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+# Rest imports
+from rest_framework import viewsets
+from rest_framework.response import Response
+from .serializers import PostSerializer, CommentSerializer
+
+
+# Rest viewsets:
+class PostViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all().order_by('id')
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all().order_by('id')
+
+
 # Create your views here.
 class AboutView(TemplateView):
     template_name = 'blog/about.html'
@@ -21,6 +38,7 @@ class PostListView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+
 
 class PostDetailView(DetailView):
     model = Post

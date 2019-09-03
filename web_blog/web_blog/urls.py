@@ -20,13 +20,15 @@ from blog.views import PostListView
 from restapp.views import UserViewSet
 from albums.views import AlbumViewSet, ArtistViewSet
 from rest_framework import routers
+from blog.views import PostViewSet, CommentViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'albums', AlbumViewSet)
 router.register(r'artists', ArtistViewSet)
-
+router.register(r'posts', PostViewSet)
+router.register(r'comments', CommentViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
