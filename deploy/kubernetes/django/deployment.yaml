@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: djangoblog
+  labels:
+    deployment: djangoblog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pod: djangoblog
+  template:
+    metadata:
+      labels:
+        pod: djangoblog
+    spec:
+      containers:
+        - name: djangoblog
+          image: blog_project:0.0.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+
+            - name: POSTGRES_HOST
+              value: postgres-service
+
+            - name: REDIS_HOST
+              value: redis-service
