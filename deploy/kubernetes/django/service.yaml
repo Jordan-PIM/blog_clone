@@ -7,6 +7,7 @@ spec:
     pod: djangoblog
   ports:
   - protocol: TCP
-    port: 8000
-    nodePort: 32001
+    port: 80
+    # Host service on port 80, get data from port 8000 (djangoblog deployment)
+    targetPort: 8000
   type: LoadBalancer
